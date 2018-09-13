@@ -1,6 +1,7 @@
 <?php
 
-namespace Controller;
+namespace App\Controller;
+
 use Slim\Container;
 
 abstract class Base
@@ -11,5 +12,4 @@ abstract class Base
     {
         $this->app = $app;
     }
-
 }
