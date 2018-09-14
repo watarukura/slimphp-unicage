@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\User\UserList;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -13,11 +14,13 @@ use Slim\Http\Response;
 //    return $this->renderer->render($response, 'index.phtml', $args);
 //});
 
-$app->map(['GET', 'POST'], '/hello', function (Request $request, Response $response) {
-    $getParams = $request->getQueryParams() ?? [];
-    $postPutParams = $request->getParsedBody() ?? [];
-    $allParams = array_merge($getParams, $postPutParams);
+//$app->map(['GET', 'POST'], '/hello', function (Request $request, Response $response) {
+//    $getParams = $request->getQueryParams() ?? [];
+//    $postPutParams = $request->getParsedBody() ?? [];
+//    $allParams = array_merge($getParams, $postPutParams);
+//
+//    $body = "ReceivedParam =" . json_encode($allParams);
+//    return $response->getBody()->write($body);
+//});
 
-    $body = "ReceivedParam =" . json_encode($allParams);
-    return $response->getBody()->write($body);
-});
+$app->map(['GET', 'POST'], '/hello', UserList::class . ':index');
