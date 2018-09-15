@@ -18,7 +18,6 @@ class Hello extends Base
     {
         $name = $request->getParam('User');
         $array = ['test' => "Hello, $name"];
-        $json = json_encode($array);
-        return $response->withHeader('ContentType', 'application/json')->withJson($json, 200);
+        return $response->withJson($array, 200);
     }
 }

@@ -30,6 +30,12 @@ function handle_request(Request $request, Response $response, array $args, Slim\
     $function = $args['function'];
 
     $class = sprintf('\App\Controller\%s\%s', $service, $function);
+    if (!class_exists($class)) {
+        $status = 404;
+        $data = ['code' => $status];
+        $response = $response->withJson($data, $status);
+        return $response;
+    }
 
     /** @var Base $controller */
     $controller = new $class($container);
