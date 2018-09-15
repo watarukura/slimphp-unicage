@@ -44,6 +44,6 @@
     "start": "php -S localhost:8080 -t public",
     "test": "phpunit",
     "md": "phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
-    "cs": "phpcs src/ --standard=PSR2"
+    "cs": "phpcs -n src/ --standard=PSR2"
   }
 }

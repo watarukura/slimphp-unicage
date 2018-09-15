@@ -1,7 +1,6 @@
 <?php
 
 use App\Controller\Base;
-use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -30,10 +29,10 @@ function handle_request(Request $request, Response $response, array $args, Slim\
     $service = ucfirst(strtolower($args['service']));
     $function = $args['function'];
 
-    $class_name = sprintf('\App\Controller\%s\%s', $service, $function);
+    $class = sprintf('\App\Controller\%s\%s', $service, $function);
 
     /** @var Base $controller */
-    $controller = new $class_name($container);
+    $controller = new $class($container);
     $response = $controller->execute($request, $response, $args);
     return $response;
 }
