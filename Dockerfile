@@ -1,7 +1,11 @@
-FROM amazonlinux:1
+FROM amazonlinux:latest
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH=$PATH:vendor/bin
+
+RUN amazon-linux-extras install -y \
+    php7.2 \
+    lamp-mariadb10.2-php7.2
 
 RUN yum update -y \
     && yum upgrade -y \
@@ -12,23 +16,20 @@ RUN yum update -y \
       libxml2-devel \
       jq \
       gcc \
+      make \
       httpd24
 
 RUN yum install -y \
-      php72 \
-      php72-pdo \
-      php72-mbstring \
-      php72-pecl-apcu \
-      php72-opcache \
-      php72-soap \
-      php72-devel \
-      php7-pear
+      php \
+      php-pdo \
+      php-mbstring \
+      php-devel \
+      php-opecache \
+      php-pear
 
 RUN yum clean all
 
-RUN sed -ie 's/$v_att_list = & func_get_args();/$v_att_list = func_get_args();/' /usr/share/pear7/Archive/Tar.php
-RUN pear7 upgrade Archive_Tar
-RUN pecl7 install xdebug
+RUN pecl install xdebug
 
 EXPOSE 80
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
