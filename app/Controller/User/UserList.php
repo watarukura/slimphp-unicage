@@ -13,7 +13,7 @@ class UserList extends Base
      * @param Response $response
      * @return mixed
      */
-    public function index(Request $request, Response $response)
+    public function execute(Request $request, Response $response)
     {
         $name = $request->getParam('User');
         $array = ['test' => "Hello, $name"];

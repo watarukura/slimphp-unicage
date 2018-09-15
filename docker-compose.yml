@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 volumes:
     logs:
@@ -6,13 +6,14 @@ volumes:
 
 services:
     slim:
-        image: php:7-alpine
-        working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
-        environment:
-            docker: "true"
-        ports:
-            - 8080:8080
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+      build: ./
+      working_dir: /var/www/html
+      environment:
+          docker: "true"
+      ports:
+        - "8000:80"
+      volumes:
+        - $PWD:/var/www/html
+        - $PWD/src/xdebug.ini:/etc/php.d/xdebug.ini
+        - $PWD/src/vhost.conf:/etc/httpd/conf.d/vhost.conf
+
