@@ -6,11 +6,12 @@ use App\Controller\Base;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class UserList extends Base
+class Hello extends Base
 {
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
+     *
      * @return mixed
      */
     public function execute(Request $request, Response $response)
