@@ -1,19 +1,15 @@
 {
-  "name": "slim/slim-skeleton",
-  "description": "A Slim Framework skeleton application for rapid development",
+  "name": "watarukura/slimphp-unicage",
+  "description": "",
   "keywords": [
-    "microframework",
-    "rest",
-    "router",
-    "psr7"
   ],
-  "homepage": "http://github.com/slimphp/Slim-Skeleton",
+  "homepage": "http://github.com/watarukura/slimphp-unicage",
   "license": "MIT",
   "authors": [
     {
-      "name": "Josh Lockhart",
-      "email": "info@joshlockhart.com",
-      "homepage": "http://www.joshlockhart.com/"
+      "name": "Wataru Kurashima",
+      "email": "what.r.j50@gmail.com",
+      "homepage": "https://watarukura.github.io/"
     }
   ],
   "require": {
