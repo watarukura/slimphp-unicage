@@ -9,8 +9,7 @@ use Slim\Http\Response;
 $app->map(
     ['POST', 'GET'],
     '/api/{service}/{function}',
-    function ($request, $response, $args) use ($app) {
-        $container = $app->getContainer();
+    function ($request, $response, $args) use ($container) {
         /** @var Slim\Container $container */
         return handle_request($request, $response, $args, $container);
     }
