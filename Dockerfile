@@ -4,8 +4,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH=$PATH:vendor/bin
 
 RUN amazon-linux-extras install -y \
-    php7.2 \
-    lamp-mariadb10.2-php7.2
+    php7.2
 
 RUN yum update -y \
     && yum upgrade -y \
