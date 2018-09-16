@@ -10,6 +10,7 @@ services:
       working_dir: /var/www/html
       environment:
           docker: "true"
+          TZ: "Japan"
       ports:
         - "8000:80"
       volumes:
