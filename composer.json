@@ -42,8 +42,14 @@
   },
   "scripts": {
     "start": "php -S localhost:8080 -t public",
-    "test": "phpunit -v",
-    "md": "phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
-    "cs": "phpcs -n src/ --standard=PSR2"
+    "test": "vendor/bin/phpunit -v",
+    "md": [
+      "vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
+      "vendor/bin/phpmd app/ text cleancode,codesize,controversial,design,naming,unusedcode"
+    ],
+    "cs": [
+      "vendor/bin/phpcs -n src/ --standard=PSR2",
+      "vendor/bin/phpcs -n app/ --standard=PSR2"
+    ]
   }
 }
