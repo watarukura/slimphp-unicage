@@ -34,6 +34,7 @@
   },
   "autoload-dev": {
     "psr-4": {
+      "App\\": "app/",
       "Tests\\": "tests/"
     }
   },
@@ -42,7 +43,7 @@
   },
   "scripts": {
     "start": "php -S localhost:8080 -t public",
-    "test": "phpunit",
+    "test": "phpunit -v",
     "md": "phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode",
     "cs": "phpcs -n src/ --standard=PSR2"
   }
