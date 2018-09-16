@@ -27,10 +27,10 @@ $app->map(
 function handle_request(Request $request, Response $response, array $args, Slim\Container $container)
 {
     $service = ucfirst(strtolower($args['service']));
-    $function = $args['function'];
+    $function = ucfirst(strtolower($args['function']));
 
     $class = sprintf('\App\Controller\%s\%s', $service, $function);
-    if (!class_exists($class)) {
+    if (!class_exists($class, true)) {
         $status = 404;
         $data = ['code' => $status];
         $response = $response->withJson($data, $status);
