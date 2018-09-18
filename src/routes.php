@@ -25,6 +25,12 @@ $app->map(
  */
 function handle_request(Request $request, Response $response, array $args, Slim\Container $container)
 {
+    $method = $request->getMethod();
+    if ($method === 'GET') {
+        $container->logger->addDebug('request: ' . json_encode($request->getQueryParams()));
+    } else {
+        $container->logger->addDebug('request: ' .json_encode($request->getParsedBody()));
+    }
     $service = ucfirst(strtolower($args['service']));
     $function = ucfirst(strtolower($args['function']));
 
@@ -33,11 +39,13 @@ function handle_request(Request $request, Response $response, array $args, Slim\
         $status = 404;
         $data = ['code' => $status];
         $response = $response->withJson($data, $status);
+        $container->logger->addDebug($response);
         return $response;
     }
 
     /** @var Base $controller */
     $controller = new $class($container);
     $response = $controller->execute($request, $response, $args);
+    $container->logger->addDebug('response: ' .$response);
     return $response;
 }
