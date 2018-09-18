@@ -16,7 +16,7 @@ RUN yum update -y \
       jq \
       gcc \
       make \
-      httpd24
+      httpd
 
 RUN yum install -y \
       php \
